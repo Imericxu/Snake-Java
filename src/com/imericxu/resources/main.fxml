@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" onMouseClicked="#sceneClicked" prefHeight="400.0" prefWidth="600.0"
+      stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imericxu.controllers.MainController">
+    <Label text="Enter Dimensions:">
+        <font>
+            <Font size="30.0"/>
+        </font>
+    </Label>
+    <HBox alignment="CENTER" spacing="20.0">
+        <padding>
+            <Insets bottom="30.0" top="30.0"/>
+        </padding>
+        <TextField fx:id="fieldRows" onAction="#launchFromEnter" promptText="Rows"
+                   styleClass="field_dims"/>
+        <TextField fx:id="fieldCols" onAction="#launchFromEnter" promptText="Cols"
+                   styleClass="field_dims"/>
+    </HBox>
+    <Button id="btn_start" onAction="#launchFromButton" mnemonicParsing="false" text="Start Game"/>
+</VBox>

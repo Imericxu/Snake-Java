@@ -1,0 +1,18 @@
+.root {
+    -fx-font-family: "Segoe UI Semilight", "Trebuchet MS";
+}
+
+#lbl_enter_dims {
+    -fx-font-size: 30;
+}
+
+.field_dims {
+    -fx-pref-width: 80;
+    -fx-pref-height: 30;
+    -fx-alignment: center;
+    -fx-font-size: 20;
+}
+
+#btn_start {
+    -fx-font-size: 15;
+}

@@ -1,0 +1,9 @@
+#toast_pane {
+    -fx-background-color: rgba(0, 0, 0, 0.64);
+    -fx-background-radius: 15;
+}
+
+#txt_message {
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 24;
+}
