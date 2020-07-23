@@ -20,10 +20,10 @@
         <padding>
             <Insets bottom="30.0" top="30.0"/>
         </padding>
-        <TextField fx:id="fieldRows" onAction="#launchFromEnter" promptText="Rows"
+        <TextField fx:id="fieldRows" onAction="#launchGame" promptText="Rows"
                    styleClass="field_dims"/>
-        <TextField fx:id="fieldCols" onAction="#launchFromEnter" promptText="Cols"
+        <TextField fx:id="fieldCols" onAction="#launchGame" promptText="Cols"
                    styleClass="field_dims"/>
     </HBox>
-    <Button id="btn_start" onAction="#launchFromButton" mnemonicParsing="false" text="Start Game"/>
+    <Button id="btn_start" onAction="#launchGame" mnemonicParsing="false" text="Start Game"/>
 </VBox>

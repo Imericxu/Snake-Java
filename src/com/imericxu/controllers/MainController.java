@@ -44,13 +44,14 @@ public class MainController
     
     /**
      * Called when "Enter" key is pressed in text fields<br/>
+     * Called when "Start" button is pressed<br/>
      * Attempts to launch the game
      */
-    public void launchFromEnter() throws IOException
+    public void launchGame() throws IOException
     {
         Stage root = (Stage) fieldRows.getScene().getWindow();
         int rows, cols;
-        
+    
         try
         {
             rows = Integer.parseInt(fieldRows.getText());
@@ -58,9 +59,10 @@ public class MainController
         catch (NumberFormatException e)
         {
             Toast.makeToast(root, "Please enter rows");
+            fieldRows.requestFocus();
             return;
         }
-        
+    
         try
         {
             cols = Integer.parseInt(fieldCols.getText());
@@ -68,9 +70,10 @@ public class MainController
         catch (NumberFormatException e)
         {
             Toast.makeToast(root, "Please enter columns", 1000, 200, 200);
+            fieldCols.requestFocus();
             return;
         }
-        
+    
         if (rows < 5 || rows > 50)
         {
             Toast.makeToast(root, "Enter a row between 5 and 50");
@@ -85,13 +88,5 @@ public class MainController
             fieldRows.getScene().getRoot().requestFocus();
             // Start game
         }
-    }
-    
-    /**
-     * Attempts to launch game when button is clicked
-     */
-    public void launchFromButton()
-    {
-    
     }
 }
