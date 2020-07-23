@@ -1,4 +1,4 @@
-package com.imericxu.components;
+package com.imericxu.gui;
 
 import javafx.scene.paint.Color;
 

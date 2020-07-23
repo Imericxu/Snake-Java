@@ -1,7 +1,7 @@
-package com.imericxu.controllers;
+package com.imericxu.gui.controllers;
 
-import com.imericxu.components.GameStage;
-import com.imericxu.components.Toast;
+import com.imericxu.gui.GameStage;
+import com.imericxu.gui.Toast;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;

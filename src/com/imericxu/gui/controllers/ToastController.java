@@ -1,4 +1,4 @@
-package com.imericxu.controllers;
+package com.imericxu.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;

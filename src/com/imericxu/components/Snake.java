@@ -14,9 +14,10 @@ public class Snake
      */
     private Direction direction;
     
-    public Snake()
+    public Snake(int row, int col)
     {
-        path = new ArrayList<Pos>();
+        path = new ArrayList<>();
+        path.add(new Pos(row, col));
     }
     
     /**

@@ -6,7 +6,7 @@
 <StackPane id="toast_pane" maxWidth="550.0" minWidth="300.0" prefHeight="50.0"
            stylesheets="@../stylesheets/toast.css" xmlns="http://javafx.com/javafx/10.0.2-internal"
            xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.imericxu.controllers.ToastController">
+           fx:controller="com.imericxu.gui.controllers.ToastController">
     <Text fx:id="txtMessage" id="txt_message" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
           text="Placeholder" textAlignment="CENTER">
     </Text>

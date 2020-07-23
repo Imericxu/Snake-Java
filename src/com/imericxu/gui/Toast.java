@@ -1,6 +1,6 @@
-package com.imericxu.components;
+package com.imericxu.gui;
 
-import com.imericxu.controllers.ToastController;
+import com.imericxu.gui.controllers.ToastController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
