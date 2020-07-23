@@ -20,8 +20,12 @@ public class Snake
         path.add(new Pos(row, col));
     }
     
+    /* * * * * * * * * * * * * * * * * * * * *
+    Methods
+    * * * * * * * * * * * * * * * * * * * * */
+    
     /**
-     * Adds a {@link Pos} to the end of the path based on calculated direction
+     * Adds a {@link Pos} to the end of the {@link #path} based on calculated {@link #direction}
      */
     public void increaseLength()
     {
@@ -46,6 +50,25 @@ public class Snake
         case WEST -> path.add(new Pos(row, col - 1));
         }
     }
+    
+    /**
+     * Modifies the {@link #path} array so the snake "moves" based on its
+     * current {@link #direction}
+     */
+    public void move()
+    {
+        switch (direction)
+        {
+        case NORTH -> moveUp();
+        case EAST -> moveRight();
+        case SOUTH -> moveDown();
+        case WEST -> moveLeft();
+        }
+    }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+    Helper Methods
+    * * * * * * * * * * * * * * * * * * * * */
     
     private void moveUp()
     {
@@ -74,6 +97,10 @@ public class Snake
         path.add(0, new Pos(head.getRow(), head.getCol() + 1));
         path.remove(path.size() - 1);
     }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+    Getters and Setters
+    * * * * * * * * * * * * * * * * * * * * */
     
     public ArrayList<Pos> getPath()
     {
