@@ -1,45 +1,38 @@
 package com.imericxu.gui;
 
-import com.imericxu.components.Pos;
 import com.imericxu.components.Snake;
 import com.imericxu.components.SnakeKeys;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class StageGame extends Stage
 {
-    private final int rows;
-    private final int cols;
-    private final int cellSize;
-    private final ArrayList<Pos> snakePath;
-    
     public StageGame(int rows, int cols)
     {
-        // Field initialization
-        this.rows = rows;
-        this.cols = cols;
-        cellSize = calculateCellSize(rows, cols);
+        // Field initialization (timers below)
+        int cellSize = calculateCellSize(rows, cols);
         Snake snake = new Snake(rows / 2, cols / 2);
-        snakePath = snake.getPath();
         
         // Canvases
         final int width = cols * cellSize;
         final int height = rows * cellSize;
         
         final Canvas cnvsGrid = new CanvasGrid(width, height, cellSize);
+        final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake);
         
-        final Canvas cnvsSnake = new Canvas(width, height);
-        GraphicsContext gcSnake = cnvsSnake.getGraphicsContext2D();
+        // Animation Timers
+        AnimationTimer timerRender = new ATimerRender(cnvsGame);
+        AnimationTimer timerStepGame = new ATimerStepGame(snake);
+        timerRender.start();
+        timerStepGame.start();
         
         // Stage instantiation
-        StackPane root = new StackPane(cnvsGrid, cnvsSnake);
+        StackPane root = new StackPane(cnvsGrid, cnvsGame);
         Scene scene = new Scene(root);
         scene.setOnKeyPressed(new SnakeKeys(snake));
         setScene(scene);

@@ -1,6 +1,5 @@
 package com.imericxu.gui;
 
-import com.imericxu.components.Direction;
 import com.imericxu.components.Snake;
 import javafx.animation.AnimationTimer;
 
@@ -20,8 +19,8 @@ public class ATimerStepGame extends AnimationTimer
     {
         if (lastUpdate >= 500_000_000)
         {
-            Direction dir = snake.getDirection();
-            
+            snake.move();
+            System.out.println("Snake moved");
             lastUpdate = 0;
         }
     }

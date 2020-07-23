@@ -55,7 +55,7 @@ public class MainController
         if (isValidInput(root))
         {
             Stage gameStage = new StageGame(rows, cols);
-            gameStage.show();
+            gameStage.showAndWait();
         }
     }
     
