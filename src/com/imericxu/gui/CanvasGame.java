@@ -17,6 +17,7 @@ public class CanvasGame extends MyCanvas
     
     public void drawSnake()
     {
+        gc.clearRect(0, 0, getWidth(), getHeight());
         gc.setFill(Colors.SNAKE);
         for (Pos pos : path)
         {

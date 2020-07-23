@@ -17,11 +17,10 @@ public class ATimerStepGame extends AnimationTimer
     @Override
     public void handle(long l)
     {
-        if (lastUpdate >= 500_000_000)
+        if (l - lastUpdate >= 250_000_000)
         {
             snake.move();
-            System.out.println("Snake moved");
-            lastUpdate = 0;
+            lastUpdate = l;
         }
     }
 }

@@ -57,12 +57,15 @@ public class Snake
      */
     public void move()
     {
-        switch (direction)
+        if (direction != null)
         {
-        case NORTH -> moveUp();
-        case EAST -> moveRight();
-        case SOUTH -> moveDown();
-        case WEST -> moveLeft();
+            switch (direction)
+            {
+            case NORTH -> moveUp();
+            case EAST -> moveRight();
+            case SOUTH -> moveDown();
+            case WEST -> moveLeft();
+            }
         }
     }
     
