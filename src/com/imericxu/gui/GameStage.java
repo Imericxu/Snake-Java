@@ -33,9 +33,7 @@ public class GameStage extends Stage
         final int width = cols * cellSize;
         final int height = rows * cellSize;
         
-        final Canvas cnvsGrid = new Canvas(width, height);
-        GraphicsContext gcGrid = cnvsGrid.getGraphicsContext2D();
-        drawGrid(gcGrid);
+        final Canvas cnvsGrid = new GridCanvas(width, height, cellSize);
         
         final Canvas cnvsSnake = new Canvas(width, height);
         GraphicsContext gcSnake = cnvsSnake.getGraphicsContext2D();
@@ -46,26 +44,6 @@ public class GameStage extends Stage
         scene.setOnKeyPressed(new SnakeKeys(snake));
         setScene(scene);
         setTitle("Snake " + rows + " × " + cols);
-    }
-    
-    private void drawGrid(GraphicsContext gc)
-    {
-        gc.setFill(Colors.BACKGROUND);
-        gc.fillRect(0, 0, cellSize * cols, cellSize * rows);
-        
-        gc.setFill(Colors.CHECKERBOARD);
-        for (int row = 0; row < rows; ++row)
-        {
-            for (int col = 0; col < cols; ++col)
-            {
-                if ((row + col) % 2 == 0)
-                {
-                    int x = col * cellSize;
-                    int y = row * cellSize;
-                    gc.fillRect(x, y, cellSize, cellSize);
-                }
-            }
-        }
     }
     
     private int calculateCellSize(int rows, int cols)
