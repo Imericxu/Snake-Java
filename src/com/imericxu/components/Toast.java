@@ -6,11 +6,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -33,15 +31,9 @@ public final class Toast
         ToastController controller = loader.getController();
         controller.init(message);
         
-        Stage stage = new Stage(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        stage.setScene(scene);
-        
-        stage.initOwner(ownerStage);
-        stage.setResizable(false);
-        
-        stage.show();
+        Popup popup = new Popup();
+        popup.getContent().add(root);
+        popup.show(ownerStage);
         
         Timeline fadeInTimeline = new Timeline(new KeyFrame(Duration.millis(fadeInTime),
                 new KeyValue(root.opacityProperty(), 1, Interpolator.EASE_IN)));
@@ -59,7 +51,7 @@ public final class Toast
                 }
                 Timeline fadeOutTimeline = new Timeline(new KeyFrame(Duration.millis(fadeOutTime)
                         , new KeyValue(root.opacityProperty(), 0, Interpolator.EASE_OUT)));
-                fadeOutTimeline.setOnFinished((ae2) -> stage.close());
+                fadeOutTimeline.setOnFinished((ae2) -> popup.hide());
                 fadeOutTimeline.play();
             }).start();
         });
