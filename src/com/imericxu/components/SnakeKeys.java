@@ -3,8 +3,6 @@ package com.imericxu.components;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
-import java.util.ArrayList;
-
 public class SnakeKeys implements EventHandler<KeyEvent>
 {
     private final Snake snake;
