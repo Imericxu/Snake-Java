@@ -2,7 +2,7 @@ package com.imericxu.gui;
 
 import com.imericxu.components.Snake;
 
-public class CanvasGame extends CanvasCustom
+public class CanvasGame extends MyCanvas
 {
     public CanvasGame(int width, int height, int cellSize, Snake snake)
     {

@@ -1,6 +1,6 @@
 package com.imericxu.gui;
 
-public class CanvasGrid extends CanvasCustom
+public class CanvasGrid extends MyCanvas
 {
     public CanvasGrid(int width, int height, int cellSize)
     {
@@ -18,12 +18,7 @@ public class CanvasGrid extends CanvasCustom
         {
             for (int col = 0; col < cols; ++col)
             {
-                if ((row + col) % 2 == 0)
-                {
-                    int x = col * cellSize;
-                    int y = row * cellSize;
-                    gc.fillRect(x, y, cellSize, cellSize);
-                }
+                if ((row + col) % 2 == 0) fillSquare(row, col);
             }
         }
     }
