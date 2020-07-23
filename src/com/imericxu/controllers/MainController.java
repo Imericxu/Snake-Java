@@ -30,10 +30,8 @@ public class MainController
             return null;
         };
         
-        fieldRows.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null,
-                integerFilter));
-        fieldCols.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null,
-                integerFilter));
+        fieldRows.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), null, integerFilter));
+        fieldCols.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), null, integerFilter));
     }
     
     /**
