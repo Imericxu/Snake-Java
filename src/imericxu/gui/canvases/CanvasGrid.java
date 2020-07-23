@@ -1,6 +1,6 @@
-package com.imericxu.gui.canvases;
+package imericxu.gui.canvases;
 
-import com.imericxu.gui.other.Colors;
+import imericxu.gui.other.Colors;
 
 public class CanvasGrid extends MyCanvas
 {

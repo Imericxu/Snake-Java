@@ -10,7 +10,7 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" onMouseClicked="#sceneClicked" prefHeight="400.0" prefWidth="600.0"
       stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/10.0.2-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imericxu.gui.controllers.MainController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="imericxu.gui.controllers.MainController">
     <Label text="Enter Dimensions:">
         <font>
             <Font size="30.0"/>

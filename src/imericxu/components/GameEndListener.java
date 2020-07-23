@@ -1,4 +1,4 @@
-package com.imericxu.components;
+package imericxu.components;
 
 public interface GameEndListener
 {

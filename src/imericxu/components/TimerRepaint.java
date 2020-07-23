@@ -1,6 +1,6 @@
-package com.imericxu.components;
+package imericxu.components;
 
-import com.imericxu.gui.canvases.CanvasGame;
+import imericxu.gui.canvases.CanvasGame;
 import javafx.animation.AnimationTimer;
 
 public class TimerRepaint extends AnimationTimer

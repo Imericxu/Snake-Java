@@ -1,8 +1,8 @@
-package com.imericxu.components.core;
+package imericxu.components.core;
 
-import com.imericxu.components.Dir;
-import com.imericxu.components.Pos;
-import com.imericxu.components.TimerStepGame;
+import imericxu.components.Dir;
+import imericxu.components.Pos;
+import imericxu.components.TimerStepGame;
 
 import java.util.ArrayList;
 import java.util.Objects;

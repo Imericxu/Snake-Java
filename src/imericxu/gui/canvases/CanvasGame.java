@@ -1,9 +1,9 @@
-package com.imericxu.gui.canvases;
+package imericxu.gui.canvases;
 
-import com.imericxu.components.core.Apple;
-import com.imericxu.components.Pos;
-import com.imericxu.components.core.Snake;
-import com.imericxu.gui.other.Colors;
+import imericxu.components.core.Apple;
+import imericxu.components.Pos;
+import imericxu.components.core.Snake;
+import imericxu.gui.other.Colors;
 
 import java.util.ArrayList;
 

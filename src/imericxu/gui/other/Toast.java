@@ -1,6 +1,6 @@
-package com.imericxu.gui.other;
+package imericxu.gui.other;
 
-import com.imericxu.gui.controllers.ToastController;
+import imericxu.gui.controllers.ToastController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public final class Toast
 {
-    private static final String PATH = "/com/imericxu/resources/toast.fxml";
+    private static final String PATH = "/imericxu/resources/toast.fxml";
     
     public static void makeToast(Stage ownerStage, String message) throws IOException
     {

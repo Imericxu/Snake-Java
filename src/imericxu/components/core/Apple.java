@@ -1,6 +1,6 @@
-package com.imericxu.components.core;
+package imericxu.components.core;
 
-import com.imericxu.components.Pos;
+import imericxu.components.Pos;
 
 public class Apple
 {
