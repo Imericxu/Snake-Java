@@ -37,24 +37,21 @@ public final class Toast
         
         Timeline fadeInTimeline = new Timeline(new KeyFrame(Duration.millis(fadeInTime),
                 new KeyValue(root.opacityProperty(), 1, Interpolator.EASE_IN)));
-        fadeInTimeline.setOnFinished((ae1) ->
+        fadeInTimeline.setOnFinished(ae -> new Thread(() ->
         {
-            new Thread(() ->
+            try
             {
-                try
-                {
-                    Thread.sleep(showTime);
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
-                Timeline fadeOutTimeline = new Timeline(new KeyFrame(Duration.millis(fadeOutTime)
-                        , new KeyValue(root.opacityProperty(), 0, Interpolator.EASE_OUT)));
-                fadeOutTimeline.setOnFinished((ae2) -> popup.hide());
-                fadeOutTimeline.play();
-            }).start();
-        });
+                Thread.sleep(showTime);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+            Timeline fadeOutTimeline = new Timeline(new KeyFrame(Duration.millis(fadeOutTime),
+                    new KeyValue(root.opacityProperty(), 0, Interpolator.EASE_OUT)));
+            fadeOutTimeline.setOnFinished(ae2 -> popup.hide());
+            fadeOutTimeline.play();
+        }).start());
         fadeInTimeline.play();
     }
 }
