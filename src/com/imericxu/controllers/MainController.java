@@ -1,5 +1,6 @@
 package com.imericxu.controllers;
 
+import com.imericxu.components.GameStage;
 import com.imericxu.components.Toast;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ public class MainController
     private TextField fieldRows;
     @FXML
     private TextField fieldCols;
+    private int rows, cols;
     
     @FXML
     public void initialize()
@@ -50,8 +52,15 @@ public class MainController
     public void launchGame() throws IOException
     {
         Stage root = (Stage) fieldRows.getScene().getWindow();
-        int rows, cols;
+        if (isValidInput(root))
+        {
+            Stage gameStage = new GameStage(rows, cols);
+            gameStage.show();
+        }
+    }
     
+    private boolean isValidInput(Stage root) throws IOException
+    {
         try
         {
             rows = Integer.parseInt(fieldRows.getText());
@@ -60,7 +69,7 @@ public class MainController
         {
             Toast.makeToast(root, "Please enter rows");
             fieldRows.requestFocus();
-            return;
+            return false;
         }
     
         try
@@ -71,22 +80,22 @@ public class MainController
         {
             Toast.makeToast(root, "Please enter columns", 1000, 200, 200);
             fieldCols.requestFocus();
-            return;
+            return false;
         }
     
         if (rows < 5 || rows > 50)
         {
             Toast.makeToast(root, "Enter a row between 5 and 50");
+            fieldRows.requestFocus();
+            return false;
         }
         else if (cols < 5 || cols > 50)
         {
             Toast.makeToast(root, "Enter a column between 5 and 50");
-            fieldRows.requestFocus();
+            fieldCols.requestFocus();
+            return false;
         }
-        else
-        {
-            fieldRows.getScene().getRoot().requestFocus();
-            // Start game
-        }
+        
+        return true;
     }
 }
