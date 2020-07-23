@@ -47,6 +47,34 @@ public class Snake
         }
     }
     
+    private void moveUp()
+    {
+        Pos head = path.get(0);
+        path.add(0, new Pos(head.getRow() - 1, head.getCol()));
+        path.remove(path.size() - 1);
+    }
+    
+    private void moveDown()
+    {
+        Pos head = path.get(0);
+        path.add(0, new Pos(head.getRow() + 1, head.getCol()));
+        path.remove(path.size() - 1);
+    }
+    
+    private void moveLeft()
+    {
+        Pos head = path.get(0);
+        path.add(0, new Pos(head.getRow(), head.getCol() - 1));
+        path.remove(path.size() - 1);
+    }
+    
+    private void moveRight()
+    {
+        Pos head = path.get(0);
+        path.add(0, new Pos(head.getRow(), head.getCol() + 1));
+        path.remove(path.size() - 1);
+    }
+    
     public ArrayList<Pos> getPath()
     {
         return path;
