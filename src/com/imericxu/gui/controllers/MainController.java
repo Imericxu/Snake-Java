@@ -1,6 +1,6 @@
 package com.imericxu.gui.controllers;
 
-import com.imericxu.gui.GameStage;
+import com.imericxu.gui.StageGame;
 import com.imericxu.gui.Toast;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -54,7 +54,7 @@ public class MainController
         Stage root = (Stage) fieldRows.getScene().getWindow();
         if (isValidInput(root))
         {
-            Stage gameStage = new GameStage(rows, cols);
+            Stage gameStage = new StageGame(rows, cols);
             gameStage.show();
         }
     }

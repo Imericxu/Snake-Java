@@ -3,13 +3,13 @@ package com.imericxu.gui;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-public class GridCanvas extends Canvas
+public class CanvasGrid extends Canvas
 {
     private final int cellSize;
     private final int rows;
     private final int cols;
     
-    public GridCanvas(double width, double height, int cellSize)
+    public CanvasGrid(double width, double height, int cellSize)
     {
         super(width, height);
         this.cellSize = cellSize;

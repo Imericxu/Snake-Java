@@ -13,14 +13,14 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class GameStage extends Stage
+public class StageGame extends Stage
 {
     private final int rows;
     private final int cols;
     private final int cellSize;
     private final ArrayList<Pos> snakePath;
     
-    public GameStage(int rows, int cols)
+    public StageGame(int rows, int cols)
     {
         // Field initialization
         this.rows = rows;
@@ -33,7 +33,7 @@ public class GameStage extends Stage
         final int width = cols * cellSize;
         final int height = rows * cellSize;
         
-        final Canvas cnvsGrid = new GridCanvas(width, height, cellSize);
+        final Canvas cnvsGrid = new CanvasGrid(width, height, cellSize);
         
         final Canvas cnvsSnake = new Canvas(width, height);
         GraphicsContext gcSnake = cnvsSnake.getGraphicsContext2D();
