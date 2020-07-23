@@ -1,11 +1,7 @@
 package com.imericxu.gui;
 
-import com.imericxu.components.TimerConstant;
-import com.imericxu.components.TimerStepGame;
-import com.imericxu.components.Snake;
-import com.imericxu.components.SnakeKeys;
+import com.imericxu.components.*;
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -17,21 +13,21 @@ public class StageGame extends Stage
 {
     public StageGame(int rows, int cols)
     {
-        // Field initialization (timers below)
         int cellSize = calculateCellSize(rows, cols);
         Snake snake = new Snake(rows / 2, cols / 2);
+        Apple apple = new Apple(rows, cols, snake);
         
         // Canvases
         final int width = cols * cellSize;
         final int height = rows * cellSize;
         
         final Canvas cnvsGrid = new CanvasGrid(width, height, cellSize);
-        final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake);
+        final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake, apple);
         
         // Animation Timers
-        AnimationTimer timerRender = new TimerConstant(cnvsGame);
-        AnimationTimer timerStepGame = new TimerStepGame(snake);
-        timerRender.start();
+        AnimationTimer timerConstant = new TimerConstant(cnvsGame);
+        AnimationTimer timerStepGame = new TimerStepGame(snake, apple);
+        timerConstant.start();
         timerStepGame.start();
         
         // Stage instantiation

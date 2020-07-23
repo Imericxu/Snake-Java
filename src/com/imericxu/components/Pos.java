@@ -11,12 +11,12 @@ public class Pos
         this.col = col;
     }
 
-    public static Direction calcDirection(Pos start, Pos end)
+    public static Dir calcDirection(Pos start, Pos end)
     {
-        if (end.row < start.row) return Direction.NORTH;
-        if (end.col > start.col) return Direction.EAST;
-        if (end.row > start.row) return Direction.SOUTH;
-        if (end.col < start.col) return Direction.WEST;
+        if (end.row < start.row) return Dir.UP;
+        if (end.col > start.col) return Dir.RIGHT;
+        if (end.row > start.row) return Dir.DOWN;
+        if (end.col < start.col) return Dir.LEFT;
         return null;
     }
     
@@ -28,5 +28,10 @@ public class Pos
     public int getCol()
     {
         return col;
+    }
+    
+    public boolean equals(Pos other)
+    {
+        return row == other.row && col == other.col;
     }
 }

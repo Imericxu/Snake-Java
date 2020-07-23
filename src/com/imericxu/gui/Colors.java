@@ -12,4 +12,5 @@ public final class Colors
             CycleMethod.NO_CYCLE, new Stop(0, Color.rgb(156, 255, 122)), new Stop(1, Color.rgb(49
             , 148, 90)));
     public static final Color SNAKE = Color.rgb(255, 207, 64);
+    public static final Color APPLE = Color.rgb(232, 44, 39);
 }

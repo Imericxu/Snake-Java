@@ -15,6 +15,6 @@ public class TimerConstant extends AnimationTimer
     @Override
     public void handle(long l)
     {
-        canvas.drawSnake();
+        canvas.draw();
     }
 }

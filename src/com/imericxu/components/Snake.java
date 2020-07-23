@@ -12,7 +12,8 @@ public class Snake
     /**
      * The direction the snake is currently facing
      */
-    private Direction direction;
+    private Dir direction;
+    private Dir tempDirection;
     
     public Snake(int row, int col)
     {
@@ -30,7 +31,7 @@ public class Snake
     public void increaseLength()
     {
         Pos end = path.get(path.size() - 1);
-        Direction dir;
+        Dir dir;
         
         if (path.size() > 1)
         {
@@ -44,10 +45,10 @@ public class Snake
         
         switch (Objects.requireNonNull(dir))
         {
-        case NORTH -> path.add(new Pos(row - 1, col));
-        case EAST -> path.add(new Pos(row, col + 1));
-        case SOUTH -> path.add(new Pos(row + 1, col));
-        case WEST -> path.add(new Pos(row, col - 1));
+        case UP -> path.add(new Pos(row - 1, col));
+        case DOWN -> path.add(new Pos(row + 1, col));
+        case LEFT -> path.add(new Pos(row, col - 1));
+        case RIGHT -> path.add(new Pos(row, col + 1));
         }
     }
     
@@ -61,12 +62,56 @@ public class Snake
         {
             switch (direction)
             {
-            case NORTH -> moveUp();
-            case EAST -> moveRight();
-            case SOUTH -> moveDown();
-            case WEST -> moveLeft();
+            case UP -> moveUp();
+            case DOWN -> moveDown();
+            case LEFT -> moveLeft();
+            case RIGHT -> moveRight();
             }
         }
+    }
+    
+    public boolean isTouchingSelf()
+    {
+        Pos head = path.get(0);
+        for (int i = 1; i < path.size(); ++i)
+        {
+            if (head.equals(path.get(i))) return true;
+        }
+        return false;
+    }
+    
+    /* * * * * * * * * * * * * * * * * * * * *
+    Getters and Setters
+    * * * * * * * * * * * * * * * * * * * * */
+    
+    public ArrayList<Pos> getPath()
+    {
+        return path;
+    }
+    
+    public void setPath(ArrayList<Pos> path)
+    {
+        this.path = path;
+    }
+    
+    public Dir getDir()
+    {
+        return direction;
+    }
+    
+    public void setDir(Dir direction)
+    {
+        this.direction = direction;
+    }
+    
+    public Dir getTempDir()
+    {
+        return tempDirection;
+    }
+    
+    public void setTempDir(Dir tempDir)
+    {
+        tempDirection = tempDir;
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -99,29 +144,5 @@ public class Snake
         Pos head = path.get(0);
         path.add(0, new Pos(head.getRow(), head.getCol() + 1));
         path.remove(path.size() - 1);
-    }
-    
-    /* * * * * * * * * * * * * * * * * * * * *
-    Getters and Setters
-    * * * * * * * * * * * * * * * * * * * * */
-    
-    public ArrayList<Pos> getPath()
-    {
-        return path;
-    }
-    
-    public void setPath(ArrayList<Pos> path)
-    {
-        this.path = path;
-    }
-    
-    public Direction getDirection()
-    {
-        return direction;
-    }
-    
-    public void setDirection(Direction direction)
-    {
-        this.direction = direction;
     }
 }

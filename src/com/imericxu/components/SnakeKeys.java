@@ -17,10 +17,18 @@ public class SnakeKeys implements EventHandler<KeyEvent>
     {
         switch (event.getCode())
         {
-        case UP -> snake.setDirection(Direction.NORTH);
-        case DOWN -> snake.setDirection(Direction.SOUTH);
-        case LEFT -> snake.setDirection(Direction.WEST);
-        case RIGHT -> snake.setDirection(Direction.EAST);
+        case UP -> {
+            if (snake.getDir() != Dir.DOWN) snake.setTempDir(Dir.UP);
+        }
+        case DOWN -> {
+            if (snake.getDir() != Dir.UP) snake.setTempDir(Dir.DOWN);
+        }
+        case LEFT -> {
+            if (snake.getDir() != Dir.RIGHT) snake.setTempDir(Dir.LEFT);
+        }
+        case RIGHT -> {
+            if (snake.getDir() != Dir.LEFT) snake.setTempDir(Dir.RIGHT);
+        }
         }
     }
 }
