@@ -22,18 +22,16 @@ public abstract class MyCanvas extends Canvas
     
     protected void fillSquare(int row, int col)
     {
-        int x = col * cellSize;
-        int y = row * cellSize;
-        gc.fillRect(x, y, cellSize, cellSize);
+        int x = col * cellSize + 1;
+        int y = row * cellSize + 1;
+        gc.fillRect(x, y, cellSize - 1, cellSize - 1);
     }
     
-// --Commented out by Inspection START (7/23/2020 3:41 PM):
-//    protected void fillSquare(int row, int col, Color color)
-//    {
-//        gc.setFill(color);
-//        int x = col * cellSize;
-//        int y = row * cellSize;
-//        gc.fillRect(x, y, cellSize, cellSize);
-//    }
-// --Commented out by Inspection STOP (7/23/2020 3:41 PM)
+    protected void fillSquare(int row, int col, Color color)
+    {
+        gc.setFill(color);
+        int x = col * cellSize + 1;
+        int y = row * cellSize + 1;
+        gc.fillRect(x, y, cellSize - 1, cellSize - 1);
+    }
 }

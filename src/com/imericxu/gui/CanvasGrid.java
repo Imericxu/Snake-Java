@@ -1,5 +1,7 @@
 package com.imericxu.gui;
 
+import javafx.scene.paint.Color;
+
 public class CanvasGrid extends MyCanvas
 {
     public CanvasGrid(int width, int height, int cellSize)
@@ -10,16 +12,21 @@ public class CanvasGrid extends MyCanvas
     
     private void drawGrid()
     {
-        gc.setFill(Colors.BACKGROUND);
-        gc.fillRect(0, 0, cellSize * cols, cellSize * rows);
+        gc.setFill(Colors.FOREGROUND);
+        gc.fillRect(0, 0, getWidth(), getHeight());
         
-        gc.setFill(Colors.CHECKERBOARD);
-        for (int row = 0; row < rows; ++row)
+        gc.setStroke(Colors.BACKGROUND);
+        gc.setLineWidth(1.5);
+        for (int row = 1; row < rows; ++row)
         {
-            for (int col = 0; col < cols; ++col)
-            {
-                if ((row + col) % 2 == 0) fillSquare(row, col);
-            }
+            double y = row * cellSize + .5;
+            gc.strokeLine(0, y, getWidth(), y);
+        }
+        
+        for (int col = 1; col < cols; ++col)
+        {
+            double x = col * cellSize + .5;
+            gc.strokeLine(x, 0, x, getHeight());
         }
     }
 }

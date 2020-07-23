@@ -1,14 +1,13 @@
-package com.imericxu.gui;
+package com.imericxu.components;
 
-import com.imericxu.components.Snake;
 import javafx.animation.AnimationTimer;
 
-public class ATimerStepGame extends AnimationTimer
+public class TimerStepGame extends AnimationTimer
 {
     private final Snake snake;
     private long lastUpdate;
     
-    public ATimerStepGame(Snake snake)
+    public TimerStepGame(Snake snake)
     {
         this.snake = snake;
         lastUpdate = 0;
