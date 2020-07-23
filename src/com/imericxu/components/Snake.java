@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class Snake
 {
+    private final int rows;
+    private final int cols;
     /**
      * All the points the snake contains in order
      */
@@ -13,12 +15,17 @@ public class Snake
      * The direction the snake is currently facing
      */
     private Dir direction;
+    /**
+     * Temporary direction to be set in {@link TimerStepGame}
+     */
     private Dir tempDirection;
     
-    public Snake(int row, int col)
+    public Snake(int rows, int cols)
     {
+        this.rows = rows;
+        this.cols = cols;
         path = new ArrayList<>();
-        path.add(new Pos(row, col));
+        path.add(new Pos(rows / 2, cols / 2));
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -38,7 +45,13 @@ public class Snake
             Pos secToLast = path.get(path.size() - 2);
             dir = Pos.calcDirection(secToLast, end);
         }
-        else dir = direction;
+        else dir = switch (direction)
+                {
+                    case UP -> Dir.DOWN;
+                    case DOWN -> Dir.UP;
+                    case LEFT -> Dir.RIGHT;
+                    case RIGHT -> Dir.LEFT;
+                };
         
         int row = end.getRow();
         int col = end.getCol();
@@ -78,6 +91,17 @@ public class Snake
             if (head.equals(path.get(i))) return true;
         }
         return false;
+    }
+    
+    public boolean isOutOfBounds()
+    {
+        int row = path.get(0).getRow();
+        int col = path.get(0).getCol();
+        
+        if (row < 0) return true;
+        if (row > rows - 1) return true;
+        if (col < 0) return true;
+        return col > cols - 1;
     }
     
     /* * * * * * * * * * * * * * * * * * * * *

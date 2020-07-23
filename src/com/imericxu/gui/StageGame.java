@@ -9,12 +9,15 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class StageGame extends Stage
+public class StageGame extends Stage implements GameEndListener
 {
+    private final AnimationTimer timerConstant;
+    private final AnimationTimer timerStepGame;
+    
     public StageGame(int rows, int cols)
     {
         int cellSize = calculateCellSize(rows, cols);
-        Snake snake = new Snake(rows / 2, cols / 2);
+        Snake snake = new Snake(rows, cols);
         Apple apple = new Apple(rows, cols, snake);
         
         // Canvases
@@ -25,10 +28,10 @@ public class StageGame extends Stage
         final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake, apple);
         
         // Animation Timers
-        AnimationTimer timerConstant = new TimerConstant(cnvsGame);
-        AnimationTimer timerStepGame = new TimerStepGame(snake, apple);
-        timerConstant.start();
-        timerStepGame.start();
+        timerConstant = new TimerRepaint(cnvsGame);
+        GameEndListener listener = this;
+        timerStepGame = new TimerStepGame(snake, apple, rows * cols, listener);
+        runTimers(true);
         
         // Stage instantiation
         StackPane root = new StackPane(cnvsGrid, cnvsGame);
@@ -51,6 +54,32 @@ public class StageGame extends Stage
         else
         {
             return (int) (screen.getWidth() / cols);
+        }
+    }
+    
+    @Override
+    public void gameOver()
+    {
+        runTimers(false);
+    }
+    
+    @Override
+    public void win()
+    {
+        runTimers(false);
+    }
+    
+    private void runTimers(boolean doRun)
+    {
+        if (doRun)
+        {
+            timerConstant.start();
+            timerStepGame.start();
+        }
+        else
+        {
+            timerConstant.stop();
+            timerStepGame.stop();
         }
     }
 }
