@@ -1,6 +1,6 @@
-package com.imericxu.gui;
+package com.imericxu.gui.canvases;
 
-import javafx.scene.paint.Color;
+import com.imericxu.gui.other.Colors;
 
 public class CanvasGrid extends MyCanvas
 {

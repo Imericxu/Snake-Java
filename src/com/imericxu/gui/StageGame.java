@@ -1,6 +1,10 @@
 package com.imericxu.gui;
 
 import com.imericxu.components.*;
+import com.imericxu.components.core.Apple;
+import com.imericxu.components.core.Snake;
+import com.imericxu.gui.canvases.CanvasGame;
+import com.imericxu.gui.canvases.CanvasGrid;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;

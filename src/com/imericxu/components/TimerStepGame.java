@@ -1,5 +1,7 @@
 package com.imericxu.components;
 
+import com.imericxu.components.core.Apple;
+import com.imericxu.components.core.Snake;
 import javafx.animation.AnimationTimer;
 
 public class TimerStepGame extends AnimationTimer

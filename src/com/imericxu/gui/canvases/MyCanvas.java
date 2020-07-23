@@ -1,4 +1,4 @@
-package com.imericxu.gui;
+package com.imericxu.gui.canvases;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

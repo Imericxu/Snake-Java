@@ -1,4 +1,4 @@
-package com.imericxu.gui;
+package com.imericxu.gui.other;
 
 import com.imericxu.gui.controllers.ToastController;
 import javafx.animation.Interpolator;

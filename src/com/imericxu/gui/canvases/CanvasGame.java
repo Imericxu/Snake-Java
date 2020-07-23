@@ -1,15 +1,16 @@
-package com.imericxu.gui;
+package com.imericxu.gui.canvases;
 
-import com.imericxu.components.Apple;
+import com.imericxu.components.core.Apple;
 import com.imericxu.components.Pos;
-import com.imericxu.components.Snake;
+import com.imericxu.components.core.Snake;
+import com.imericxu.gui.other.Colors;
 
 import java.util.ArrayList;
 
 public class CanvasGame extends MyCanvas
 {
     private final ArrayList<Pos> path;
-    private Apple apple;
+    private final Apple apple;
     
     public CanvasGame(int width, int height, int cellSize, Snake snake, Apple apple)
     {

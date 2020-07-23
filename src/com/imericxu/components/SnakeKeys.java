@@ -1,5 +1,6 @@
 package com.imericxu.components;
 
+import com.imericxu.components.core.Snake;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

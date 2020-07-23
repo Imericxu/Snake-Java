@@ -1,4 +1,4 @@
-package com.imericxu.gui;
+package com.imericxu.gui.other;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
