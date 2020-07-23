@@ -1,25 +1,14 @@
 package com.imericxu.gui;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-
-public class CanvasGrid extends Canvas
+public class CanvasGrid extends CanvasCustom
 {
-    private final int cellSize;
-    private final int rows;
-    private final int cols;
-    
-    public CanvasGrid(double width, double height, int cellSize)
+    public CanvasGrid(int width, int height, int cellSize)
     {
-        super(width, height);
-        this.cellSize = cellSize;
-        rows = (int) (height / cellSize);
-        cols = (int) (width / cellSize);
-        GraphicsContext gc = getGraphicsContext2D();
-        drawGrid(gc);
+        super(width, height, cellSize);
+        drawGrid();
     }
     
-    private void drawGrid(GraphicsContext gc)
+    private void drawGrid()
     {
         gc.setFill(Colors.BACKGROUND);
         gc.fillRect(0, 0, cellSize * cols, cellSize * rows);
