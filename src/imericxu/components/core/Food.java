@@ -2,7 +2,7 @@ package imericxu.components.core;
 
 import imericxu.components.Pos;
 
-public class Apple
+public class Food
 {
     private final int rows;
     private final int cols;
@@ -10,7 +10,7 @@ public class Apple
     private int row;
     private int col;
     
-    public Apple(int rows, int cols, Snake snake)
+    public Food(int rows, int cols, Snake snake)
     {
         this.rows = rows;
         this.cols = cols;

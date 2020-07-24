@@ -1,7 +1,7 @@
 package imericxu.gui.canvases;
 
 import imericxu.components.Pos;
-import imericxu.components.core.Apple;
+import imericxu.components.core.Food;
 import imericxu.components.core.Snake;
 import imericxu.gui.other.Colors;
 import javafx.scene.paint.Color;
@@ -11,20 +11,20 @@ import java.util.ArrayList;
 public class CanvasGame extends MyCanvas
 {
     private final ArrayList<Pos> path;
-    private final Apple apple;
+    private final Food food;
     
-    public CanvasGame(int width, int height, int cellSize, Snake snake, Apple apple)
+    public CanvasGame(int width, int height, int cellSize, Snake snake, Food food)
     {
         super(width, height, cellSize);
         path = snake.getPath();
-        this.apple = apple;
+        this.food = food;
     }
     
     public void draw()
     {
         gc.clearRect(0, 0, getWidth(), getHeight());
         
-        fillSquare(apple.getRow(), apple.getCol(), Colors.APPLE);
+        fillSquare(food.getRow(), food.getCol(), Colors.FOOD);
         
         Color colorSnake = Colors.SNAKE;
         double brightnessFactor = 0.998 / (1 + Math.exp(-0.02 * (path.size() + 165)));

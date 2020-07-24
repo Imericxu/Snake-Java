@@ -1,22 +1,22 @@
 package imericxu.components;
 
-import imericxu.components.core.Apple;
+import imericxu.components.core.Food;
 import imericxu.components.core.Snake;
 import javafx.animation.AnimationTimer;
 
 public class TimerStepGame extends AnimationTimer
 {
     private final Snake snake;
-    private final Apple apple;
+    private final Food food;
     private final GameEndListener listener;
     private final int area;
     private long lastUpdate;
     private long delay;
     
-    public TimerStepGame(Snake snake, Apple apple, int area, GameEndListener listener)
+    public TimerStepGame(Snake snake, Food food, int area, GameEndListener listener)
     {
         this.snake = snake;
-        this.apple = apple;
+        this.food = food;
         this.listener = listener;
         this.area = area;
         lastUpdate = 0;
@@ -24,9 +24,9 @@ public class TimerStepGame extends AnimationTimer
     }
     
     @Override
-    public void handle(long l)
+    public void handle(long now)
     {
-        if (l - lastUpdate >= delay)
+        if (now - lastUpdate >= delay)
         {
             Dir tempDir = snake.nextDir();
             if (tempDir != null)
@@ -36,13 +36,13 @@ public class TimerStepGame extends AnimationTimer
             snake.move();
             if (snake.isTouchingSelf() || snake.isOutOfBounds()) listener.gameOver();
             if (snake.getPath().size() == area) listener.win();
-            if (apple.isBeingEaten())
+            if (food.isBeingEaten())
             {
-                apple.regen();
                 snake.increaseLength();
+                food.regen();
                 delay *= 0.995;
             }
-            lastUpdate = l;
+            lastUpdate = now;
         }
     }
 }

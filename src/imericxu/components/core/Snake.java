@@ -17,7 +17,7 @@ public class Snake
     /**
      * All the points the snake contains in order
      */
-    private ArrayList<Pos> path;
+    private final ArrayList<Pos> path;
     /**
      * The direction the snake is currently facing
      */
@@ -49,13 +49,7 @@ public class Snake
             Pos secToLast = path.get(path.size() - 2);
             dir = Pos.calcDirection(secToLast, end);
         }
-        else dir = switch (direction)
-                {
-                    case UP -> Dir.DOWN;
-                    case DOWN -> Dir.UP;
-                    case LEFT -> Dir.RIGHT;
-                    case RIGHT -> Dir.LEFT;
-                };
+        else dir = direction.opposite();
         
         int row = end.getRow();
         int col = end.getCol();
@@ -130,16 +124,6 @@ public class Snake
     public ArrayList<Pos> getPath()
     {
         return path;
-    }
-    
-    public void setPath(ArrayList<Pos> path)
-    {
-        this.path = path;
-    }
-    
-    public Dir getDir()
-    {
-        return direction;
     }
     
     public void setDir(Dir direction)

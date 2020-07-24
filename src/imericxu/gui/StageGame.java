@@ -1,7 +1,7 @@
 package imericxu.gui;
 
 import imericxu.components.*;
-import imericxu.components.core.Apple;
+import imericxu.components.core.Food;
 import imericxu.components.core.Snake;
 import imericxu.gui.canvases.CanvasGame;
 import imericxu.gui.canvases.CanvasGrid;
@@ -26,19 +26,19 @@ public class StageGame extends Stage implements GameEndListener
     {
         int cellSize = calculateCellSize(rows, cols);
         Snake snake = new Snake(rows, cols);
-        Apple apple = new Apple(rows, cols, snake);
+        Food food = new Food(rows, cols, snake);
         
         // Canvases
         final int width = cols * cellSize;
         final int height = rows * cellSize;
         
         final Canvas cnvsGrid = new CanvasGrid(width, height, cellSize);
-        final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake, apple);
+        final CanvasGame cnvsGame = new CanvasGame(width, height, cellSize, snake, food);
         
         // Animation Timers
         timerConstant = new TimerRepaint(cnvsGame);
         GameEndListener listener = this;
-        timerStepGame = new TimerStepGame(snake, apple, rows * cols, listener);
+        timerStepGame = new TimerStepGame(snake, food, rows * cols, listener);
         runTimers(true);
         
         // Stage instantiation

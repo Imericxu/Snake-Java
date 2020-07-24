@@ -25,7 +25,7 @@ public class MainController
         UnaryOperator<TextFormatter.Change> integerFilter = change ->
         {
             String newText = change.getControlNewText();
-            if (newText.matches("\\d+"))
+            if (newText.matches("\\d*"))
             {
                 return change;
             }
