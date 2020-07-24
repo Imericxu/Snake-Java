@@ -28,12 +28,13 @@ public class TimerStepGame extends AnimationTimer
         {
             snake.setDir(snake.getTempDir());
             snake.move();
+            if (snake.getDir() != null) snake.increaseLength();
             if (snake.isTouchingSelf() || snake.isOutOfBounds()) listener.gameOver();
             if (apple.isTouchingSnake())
             {
                 apple.regen();
                 snake.increaseLength();
-                delay *= 0.965;
+                delay *= 0.995;
             }
             lastUpdate = l;
         }
