@@ -19,7 +19,7 @@ public class Main extends Application
         Parent root = FXMLLoader.load(getClass().getResource("resources/main.fxml"));
         primaryStage.setTitle("Snake");
         primaryStage.setScene(new Scene(root));
-        root.requestFocus();
+//        root.requestFocus();
         primaryStage.show();
     }
 }

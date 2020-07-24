@@ -1,18 +1,36 @@
-.root {
-    -fx-font-family: "Segoe UI Semilight", "Trebuchet MS";
+#root {
+    -fx-background-color: linear-gradient(to bottom right, #4d8b31 0%, #028090 100%);
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-font-family: "Trebuchet MS";
 }
 
 #lbl_enter_dims {
-    -fx-font-size: 30;
+    -fx-font-family: "Calibri Light", "Segoe UI Semilight";
+    -fx-font-size: 44;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
 }
 
 .field_dims {
-    -fx-pref-width: 80;
-    -fx-pref-height: 30;
     -fx-alignment: center;
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 5;
     -fx-font-size: 20;
+    -fx-pref-height: 30;
+    -fx-pref-width: 80;
+    -fx-prompt-text-fill: #808080;
 }
 
 #btn_start {
+    -fx-background-color: #1e212b;
+    -fx-background-radius: 5;
+    -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 15;
+    -fx-padding: 10 12;
+    -fx-text-fill: white;
+}
+
+#btn_start:pressed {
+    -fx-background-color: #252525;
 }
