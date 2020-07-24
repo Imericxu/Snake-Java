@@ -31,6 +31,7 @@ public class TimerStepGame extends AnimationTimer
             snake.setDir(snake.getTempDir());
             snake.move();
             if (snake.isTouchingSelf() || snake.isOutOfBounds()) listener.gameOver();
+            if (snake.getPath().size() == area) listener.win();
             if (apple.isBeingEaten())
             {
                 apple.regen();
