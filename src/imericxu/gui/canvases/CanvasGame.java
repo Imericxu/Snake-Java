@@ -27,11 +27,12 @@ public class CanvasGame extends MyCanvas
         fillSquare(apple.getRow(), apple.getCol(), Colors.APPLE);
         
         Color colorSnake = Colors.SNAKE;
+        double brightnessFactor = 0.998 / (1 + Math.exp(-0.02 * (path.size() + 165)));
+    
         for (Pos pos : path)
         {
             gc.setFill(colorSnake);
             fillSquare(pos.getRow(), pos.getCol());
-            double brightnessFactor = 0.998 / (1 + Math.exp(-0.02 * (path.size() + 165)));
             colorSnake = colorSnake.deriveColor(-3, 1, brightnessFactor, 1);
         }
     }
