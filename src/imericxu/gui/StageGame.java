@@ -9,9 +9,13 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class StageGame extends Stage implements GameEndListener
 {
@@ -40,7 +44,11 @@ public class StageGame extends Stage implements GameEndListener
         // Stage instantiation
         StackPane root = new StackPane(cnvsGrid, cnvsGame);
         Scene scene = new Scene(root);
-        scene.setOnKeyPressed(new SnakeKeys(snake));
+        
+        Set<KeyCode> pressedKeys = new HashSet<>();
+        scene.setOnKeyPressed(new KeyDownListener(pressedKeys, snake));
+        scene.setOnKeyReleased(new KeyUpLIstener(pressedKeys));
+        
         setScene(scene);
         setTitle("Snake " + rows + " × " + cols);
     }
