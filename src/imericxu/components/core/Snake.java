@@ -2,13 +2,16 @@ package imericxu.components.core;
 
 import imericxu.components.Dir;
 import imericxu.components.Pos;
-import imericxu.components.TimerStepGame;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Snake
 {
+    /**
+     * A queue of keyed directions to prevent reversal
+     */
+    public final ArrayList<Dir> keyQueue;
     private final int rows;
     private final int cols;
     /**
@@ -19,10 +22,6 @@ public class Snake
      * The direction the snake is currently facing
      */
     private Dir direction;
-    /**
-     * Temporary direction to be set in {@link TimerStepGame}
-     */
-    private Dir tempDirection;
     
     public Snake(int rows, int cols)
     {
@@ -30,6 +29,7 @@ public class Snake
         this.cols = cols;
         path = new ArrayList<>();
         path.add(new Pos(rows / 2, cols / 2));
+        keyQueue = new ArrayList<>();
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -108,6 +108,21 @@ public class Snake
         return col > cols - 1;
     }
     
+    public void pushQueue(Dir direction)
+    {
+        while (keyQueue.size() >= 3) keyQueue.remove(0);
+        if (!keyQueue.isEmpty() && direction == keyQueue.get(keyQueue.size() - 1).opposite())
+            return;
+        if (this.direction != null && direction == this.direction.opposite()) return;
+        
+        keyQueue.add(direction);
+    }
+    
+    public Dir nextDir()
+    {
+        return keyQueue.isEmpty() ? null : keyQueue.remove(0);
+    }
+    
     /* * * * * * * * * * * * * * * * * * * * *
     Getters and Setters
     * * * * * * * * * * * * * * * * * * * * */
@@ -130,16 +145,6 @@ public class Snake
     public void setDir(Dir direction)
     {
         this.direction = direction;
-    }
-    
-    public Dir getTempDir()
-    {
-        return tempDirection;
-    }
-    
-    public void setTempDir(Dir tempDir)
-    {
-        tempDirection = tempDir;
     }
     
     /* * * * * * * * * * * * * * * * * * * * *

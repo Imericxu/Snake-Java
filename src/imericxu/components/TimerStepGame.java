@@ -28,7 +28,11 @@ public class TimerStepGame extends AnimationTimer
     {
         if (l - lastUpdate >= delay)
         {
-            snake.setDir(snake.getTempDir());
+            Dir tempDir = snake.nextDir();
+            if (tempDir != null)
+            {
+                snake.setDir(tempDir);
+            }
             snake.move();
             if (snake.isTouchingSelf() || snake.isOutOfBounds()) listener.gameOver();
             if (snake.getPath().size() == area) listener.win();

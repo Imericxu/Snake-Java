@@ -18,18 +18,10 @@ public class SnakeKeys implements EventHandler<KeyEvent>
     {
         switch (event.getCode())
         {
-        case UP -> {
-            if (snake.getDir() != Dir.DOWN) snake.setTempDir(Dir.UP);
-        }
-        case DOWN -> {
-            if (snake.getDir() != Dir.UP) snake.setTempDir(Dir.DOWN);
-        }
-        case LEFT -> {
-            if (snake.getDir() != Dir.RIGHT) snake.setTempDir(Dir.LEFT);
-        }
-        case RIGHT -> {
-            if (snake.getDir() != Dir.LEFT) snake.setTempDir(Dir.RIGHT);
-        }
+        case UP -> snake.pushQueue(Dir.UP);
+        case DOWN -> snake.pushQueue(Dir.DOWN);
+        case LEFT -> snake.pushQueue(Dir.LEFT);
+        case RIGHT -> snake.pushQueue(Dir.RIGHT);
         }
     }
 }
