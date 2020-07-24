@@ -32,7 +32,10 @@ public class CanvasGame extends MyCanvas
         for (Pos pos : path)
         {
             gc.setFill(colorSnake);
-            fillSquare(pos.getRow(), pos.getCol());
+//            fillSquare(pos.getRow(), pos.getCol());
+            int x = pos.getCol() * cellSize;
+            int y = pos.getRow() * cellSize;
+            gc.fillRect(x, y, cellSize + 1, cellSize + 1);
             colorSnake = colorSnake.deriveColor(-3, 1, brightnessFactor, 1);
         }
     }
