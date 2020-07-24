@@ -27,13 +27,10 @@ public class Apple
         } while (isTouchingSnake());
     }
     
-    public boolean isTouchingSnake()
+    public boolean isBeingEaten()
     {
-        for (Pos pos : snake.getPath())
-        {
-            if (row == pos.getRow() && col == pos.getCol()) return true;
-        }
-        return false;
+        Pos head = snake.getPath().get(0);
+        return row == head.getRow() && col == head.getCol();
     }
     
     public int getRow()
@@ -44,5 +41,14 @@ public class Apple
     public int getCol()
     {
         return col;
+    }
+    
+    private boolean isTouchingSnake()
+    {
+        for (Pos pos : snake.getPath())
+        {
+            if (row == pos.getRow() && col == pos.getCol()) return true;
+        }
+        return false;
     }
 }

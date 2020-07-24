@@ -9,6 +9,7 @@ public class TimerStepGame extends AnimationTimer
     private final Snake snake;
     private final Apple apple;
     private final GameEndListener listener;
+    private final int area;
     private long lastUpdate;
     private long delay;
     
@@ -17,6 +18,7 @@ public class TimerStepGame extends AnimationTimer
         this.snake = snake;
         this.apple = apple;
         this.listener = listener;
+        this.area = area;
         lastUpdate = 0;
         delay = (long) (1.5715e8 * Math.pow(0.99893, area) + 3.8915e7);
     }
@@ -28,9 +30,8 @@ public class TimerStepGame extends AnimationTimer
         {
             snake.setDir(snake.getTempDir());
             snake.move();
-            if (snake.getDir() != null) snake.increaseLength();
             if (snake.isTouchingSelf() || snake.isOutOfBounds()) listener.gameOver();
-            if (apple.isTouchingSnake())
+            if (apple.isBeingEaten())
             {
                 apple.regen();
                 snake.increaseLength();
