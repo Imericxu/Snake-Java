@@ -38,6 +38,7 @@ public class TimerStepGame extends AnimationTimer
             if (snake.getPath().size() == area) listener.win();
             if (food.isBeingEaten())
             {
+                listener.increaseScore(snake.isLeft());
                 snake.increaseLength();
                 food.regen();
                 delay *= 0.995;

@@ -83,15 +83,18 @@ public class MainController
             return false;
         }
     
-        if (rows < 5 || rows > 50)
+        final int lowBound = 8;
+        final int upBound = 50;
+        
+        if (rows < lowBound || rows > upBound)
         {
-            Toast.makeToast(root, "Enter a row between 5 and 50");
+            Toast.makeToast(root, "Enter a row between " + lowBound + " and " + upBound);
             fieldRows.requestFocus();
             return false;
         }
-        else if (cols < 5 || cols > 50)
+        else if (cols < lowBound || cols > upBound)
         {
-            Toast.makeToast(root, "Enter a column between 5 and 50");
+            Toast.makeToast(root, "Enter a column between " + lowBound + " and " + upBound);
             fieldCols.requestFocus();
             return false;
         }

@@ -162,4 +162,9 @@ public class Snake
         path.add(0, new Pos(head.getRow(), head.getCol() + 1));
         path.remove(path.size() - 1);
     }
+    
+    public boolean isLeft()
+    {
+        return path.get(0).getCol() <= cols / 2;
+    }
 }

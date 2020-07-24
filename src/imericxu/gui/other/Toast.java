@@ -7,8 +7,12 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -27,7 +31,6 @@ public final class Toast
     {
         FXMLLoader loader = new FXMLLoader(Toast.class.getResource(PATH));
         StackPane root = loader.load();
-        root.setOpacity(0);
         ToastController controller = loader.getController();
         controller.init(message);
         
@@ -35,8 +38,20 @@ public final class Toast
         popup.getContent().add(root);
         popup.show(ownerStage);
         
-        Timeline fadeInTimeline = new Timeline(new KeyFrame(Duration.millis(fadeInTime),
-                new KeyValue(root.opacityProperty(), 1, Interpolator.EASE_IN)));
+        fadeWindow(popup, fadeInTime, showTime, fadeOutTime);
+    }
+    
+    /**
+     * @param window   window to fade
+     * @param inTime   fade-in time in milliseconds
+     * @param showTime show time in milliseconds
+     * @param outTime  fade-out time in milliseconds
+     */
+    public static void fadeWindow(Window window, int inTime, int showTime, int outTime)
+    {
+        window.setOpacity(0);
+        Timeline fadeInTimeline = new Timeline(new KeyFrame(Duration.millis(inTime),
+                new KeyValue(window.opacityProperty(), 1, Interpolator.EASE_IN)));
         fadeInTimeline.setOnFinished(ae -> new Thread(() ->
         {
             try
@@ -47,9 +62,9 @@ public final class Toast
             {
                 e.printStackTrace();
             }
-            Timeline fadeOutTimeline = new Timeline(new KeyFrame(Duration.millis(fadeOutTime),
-                    new KeyValue(root.opacityProperty(), 0, Interpolator.EASE_OUT)));
-            fadeOutTimeline.setOnFinished(ae2 -> popup.hide());
+            Timeline fadeOutTimeline = new Timeline(new KeyFrame(Duration.millis(outTime),
+                    new KeyValue(window.opacityProperty(), 0, Interpolator.EASE_OUT)));
+            fadeOutTimeline.setOnFinished(ae2 -> window.hide());
             fadeOutTimeline.play();
         }).start());
         fadeInTimeline.play();
