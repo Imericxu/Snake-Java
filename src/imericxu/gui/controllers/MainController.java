@@ -83,7 +83,7 @@ public class MainController
             return false;
         }
     
-        final int lowBound = 8;
+        final int lowBound = 10;
         final int upBound = 50;
         
         if (rows < lowBound || rows > upBound)
