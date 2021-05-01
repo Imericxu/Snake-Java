@@ -1,3 +1,3 @@
 # Snake
 
-A basic snake game I made to explore the possibilities of JavaFX.
+A basic snake game I made while I was learning JavaFX.
